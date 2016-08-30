@@ -1,22 +1,19 @@
 #!/usr/bin/ruby
-drum_size = 6 #Размер барабана
-puts "Вставьте патрон в барабан:"
-recharge_cartridge = gets #Номер барабана в котором находится патрон
-random_drum = rand(1..6) #Случайный барабан
-if recharge_cartridge.to_i <= 0 || recharge_cartridge.to_i > 6
-  puts "Вы ввели не верное значени"
-else
-  while random_drum.to_i <= drum_size do
-    puts "Нажмите на курок"
-    gets
-    if random_drum == recharge_cartridge.to_i
-      puts "Вы проиграли :("
-      break
-    elsif random_drum == 6
-        random_drum = 1
-    else
-        random_drum += 1
-    end
-      puts "Вам повезло. Следующий ход соперника"
+puts "Правила игры"
+puts "Пустой барабан револьвера заряжается один патрон, после чего барабан проворачивается так, чтобы игроки не знали, где располагается единственный патрон."
+puts "После этого игроки по очереди нажимают на спусковой крючок"
+drum = Array.new(6)
+puts "Поместите патрон в барабан. Для этого нажмите ВВОД"
+gets
+drum[rand(0..5)] = true
+puts "Крутите барбан. Для этого нажмите ВВОД"
+gets
+ordered_drum = drum.shuffle
+ordered_drum.each do |camore|
+  if camore == true
+    puts "Game Over"
+    break
   end
+  puts "Вам повезло. Следующий ход соперника. Нажмите на спусковой крючок"
+  gets
 end
