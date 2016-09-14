@@ -10,7 +10,7 @@ puts "Крутите барбан. Для этого нажмите ВВОД"
 gets
 ordered_drum = drum.shuffle
 ordered_drum.each do |camore|
-  if camore == true
+  if camore
     puts "Game Over"
     break
   end
